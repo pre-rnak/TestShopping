@@ -42,7 +42,7 @@ namespace ShopingCartDemo.Controllers
             }
             else
             {
-                ViewBag.LoginFaild = "Invalid username or password";
+                ViewBag.LoginFaild = "Invalid username or password please retry...";
                 return View("login");
             }
         }
