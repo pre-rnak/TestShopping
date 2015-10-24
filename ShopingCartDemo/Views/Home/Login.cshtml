@@ -1,0 +1,40 @@
+﻿@model ShopingCartDemo.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+<link href="../../Content/Style.css" rel="stylesheet" type="text/css" />
+<div class="divLogin">
+    <div class="error">@ViewBag.LoginFaild</div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+
+        <table cellpadding="10">
+            <tr>
+                <td colspan="2">
+                    Login
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.UserName)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Password)
+                </td>
+                <td>@Html.PasswordFor(model => model.Password)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <input type="submit" value="Login" />
+                </td>
+            </tr>
+        </table>
+    
+    }
+</div>

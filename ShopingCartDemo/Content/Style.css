@@ -1,0 +1,98 @@
+﻿.error
+{
+    color:Red;
+}
+#spnCart
+{
+    background:green;
+    color:White;
+    padding:5px;
+    border-radius:2px;
+}
+#cartList td, th {
+    padding: 10px !important;
+}
+.cartDel
+{
+    background:red;
+    color:White;
+    padding:4px;
+    border-radius:3px;
+    cursor:pointer;
+}
+
+.top
+{
+   width:100%; 
+}
+.divLogin
+{
+    border: 2px outset #6f6d6e;
+    margin: 90px;
+    padding: 20px;
+    width: 30%;
+}
+.divCart {
+    float: left;
+    width: 22%;
+}
+
+.divName {
+    display: block;
+    float: left;
+    width: 65%;
+}
+.container
+{
+    margin:10px;
+}
+
+.itemImage {
+    display: block;
+    float: left;
+    height: 170px;
+    padding-left: 10px;
+    width: 150px;
+}
+
+.divImg {
+    width: 100%;
+}
+
+.divIName {
+    background: none repeat scroll 0 0 #288dd6;
+    color: #ffffff;
+    padding-left: 12px;
+    text-align: center;
+}
+.itemDetails {
+    background: none repeat scroll 0 0 #c9c9c9;
+    float: left;
+    height: 164px;
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 200px;
+}
+
+.divBuy {
+    float: left;
+    
+    width: 50%;
+}
+
+.divOff {
+    margin-bottom: 25px;
+}
+.divDesc
+{
+    margin-bottom:5px;
+}
+.divAddCart {
+    background: none repeat scroll 0 0 #008000;
+    border-radius: 2px;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    padding: 2px;
+    width: 50%;
+}

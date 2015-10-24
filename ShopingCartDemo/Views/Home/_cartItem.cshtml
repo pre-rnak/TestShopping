@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ShopingCartDemo.Models.Item>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+                Your cart
+            </h4>
+        </div>
+        <div class="modal-body">
+            <table id="cartList">
+                <thead>
+                    <tr>
+                        <td><b>Image</b></td>
+                        <td><b>Name</b></td>
+                        <td><b>Price</b></td>
+                        <td><b>Offer</b></td>
+                        <td><b>Action</b></td>
+                    </tr>
+                </thead><tbody>
+    @foreach (var objItem in Model)
+    {
+
+        <tr id="@objItem.Id">
+            <td>
+                <img src="@objItem.ImagePath" width="50" height="50" />
+            </td>
+            <td>
+                @objItem.Name
+            </td>
+            <td>
+                @objItem.Price
+            </td>
+            <td>
+                @objItem.Offer
+
+            </td>
+            <td>
+                <span class="cartDel">Remove</span>
+            </td>
+        </tr>
+    }
+</tbody>
+
+            </table>
+            <span class="totalPrice">Total Amount @ViewBag.Total</span>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+            </button>
+            <button type="button" class="btn btn-primary">
+                Proceed
+            </button>
+        </div>
+    </div>
+</div>

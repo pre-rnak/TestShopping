@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ShopingCartDemo.Models.Item>
+
+<script src="../../Scripts/jquery-2.1.1.js" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap-modal.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="../../Content/Style.css" rel="stylesheet" type="text/css" />
+
+
+<script>
+    $(document).ready(function () {
+
+        $('.divAddCart').on('click', function () {
+            var getItemId =parseInt($(this).closest('td').prop('id'));
+            var getUserName = $('.divName').html();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                url: 'Home/AddCart',
+                data: "{ 'itemId':' " + getItemId + "' }",
+                success: function (data) {
+                    $('#spnCart').html(data)
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        });
+
+        $('#spnCart').on('click', function () {
+            var getName = $('.divName').html();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                url: '/Home/GetCartItems',
+               
+                success: function (data) {
+                    $('#exampleModal').html(data);
+                    $('#exampleModal').modal({
+                        backdrop:false
+                    });
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        });
+
+        $(document).delegate('.cartDel', 'click', function () {
+            var DeleteItem=parseInt($(this).closest('tr').prop('id'));
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                url: '/Home/DeleteCart',
+                data: "{ 'itemId':' " + DeleteItem + "' }",
+                success: function (data) {
+                    $('#exampleModal').html(data);
+                    $('#spnCart').html($(data).find('#cartList tbody tr').length);
+                    $('#exampleModal').modal({
+                        backdrop: false
+                    });
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
+<div class="top">
+    <div class="divName">@ViewBag.userName</div>
+    <div class="divCart">
+        Total Items In Cart : <span id="spnCart">@ViewBag.cartCount</span>
+    </div>
+    <div class="divLgout">
+        @Html.ActionLink("Logout","Login")
+    </div>
+    <div class="container">
+    <table>
+        @foreach (var objItem in Model)
+        {
+            <tr>
+                <td id="@objItem.Id">
+                    <div class="itemImage">
+                        <div class="divImg"><img src="@objItem.ImagePath" height="150" width="150" /></div>
+                        <div class="divIName">@objItem.Name</div>
+                    </div>
+                    <div class="itemDetails">
+                        <div class="divDesc">@objItem.Description</div>
+                        <div class="divCat">Category : @objItem.Category</div>
+                        <div class="divPrice">Price : @objItem.Price</div>
+                        <div class="divOff">Off : @objItem.Offer %</div>
+                        <div class="divBuy">Buy</div>
+                        <div class="divAddCart">Add To Cart</div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+    </div>
+</div>
+
+<div class="modal" id="exampleModal" tabindex="1000" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+</div>
